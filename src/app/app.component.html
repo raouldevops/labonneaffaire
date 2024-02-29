@@ -25,33 +25,24 @@
 
       <!-- Main message or call to action -->
       <div class="jumbotron">
-        <div class="container">
-          <h1 class="display-3">La bonne affaire</h1>
+        <div class="container text-center">
+          <h1 class="display-3 mt-5">La bonne affaire</h1>
           <p>{{message}}</p>
         </div>
       </div>
 
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" *ngFor="let item of articles" >
             <app-article 
-              [titreArticle]="'Velo'" 
-              [prixArticle]=12
-              [altImage]="'image1'"
-              [imageSrc]="''"
-              [dispo]="true"
-              (message)="affiche(($event))"/>
+              [titreArticle]="item.titreArticle" 
+              [prixArticle]="item.prixArticle"
+              [altImage]="item.altImage"
+              [imageSrc]="item.imageSrc"
+              [description]="item.description"
+              [disponibilite]="item.disponibilite"
+              (message)="affiche(($event))"></app-article>
           </div>
-          <div class="col-md-4">
-            <app-article 
-              [titreArticle]="'Velo'" 
-              [prixArticle]=12
-              [altImage]="'image1'"
-              [imageSrc]="''"
-              [dispo]="true"
-              (message)="affiche(($event))"/>
-          </div>
-
         </div>
       </div> <!-- /container -->
 

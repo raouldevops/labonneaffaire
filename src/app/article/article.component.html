@@ -1,11 +1,13 @@
 <div class="card" style="width: 18rem;">
     <img class="card-img-top" [src]="imageSrc" [alt]="altImage">
     <div class="card-body">
-      <h5 class="card-title">{{titreArticle}}</h5>  
-      <span ngIf="dispo==false">Indisponible</span>
-      <p class="card-text">{{prixArticle}} $</p>
-      <i class="bi bi-hand-thumbs-up-fill mr-1" (click)="onLike()"></i>{{likes}}
-      <i class="bi bi-hand-thumbs-down-fill mr-1" (click)="onDisLike()"></i>{{dislikes}}
+      <h5 class="card-title" [ngStyle]="{color: getColor()}">{{titreArticle}}  
+      <span *ngIf="disponibilite==false">(Indisponible)</span>
+      </h5>
+      <h6 class="card-text">{{prixArticle |  currency: 'CAD' }} </h6>
+      <p class="card-text">{{description}}</p>
+      <i class="bi bi-hand-thumbs-up-fill mr-1" ngClass="hideLikeBtn : hidden" (click)="onLike()"></i>{{likes}}
+      <i class="bi bi-hand-thumbs-down-fill mr-1" (click)="onDisLike()" ></i>{{dislikes}}
         <br/><br/>
       <span>Commentaires</span>
       <input type="text" class="input" [(ngModel)]="comment"/>
@@ -13,3 +15,4 @@
 
     </div>
   </div>
+ 

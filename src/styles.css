@@ -2,3 +2,7 @@
 body {
     font-family: Overpass;
    }
+img {
+    height: 280px;
+    width: 280px;
+}   
