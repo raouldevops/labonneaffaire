@@ -1,6 +1,6 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">La bonne affaire</a>
+      <a class="navbar-brand" routerLink="/">La bonne affaire</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -8,43 +8,18 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" routerLink="/" routerLinkActive="router-link-active" >Accueil <span class="sr-only">(current)</span></a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <a class="form-inline my-2 my-lg-0" routerLink="creer-un-article">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Nouvel article</button>
+        </a>
       </div>
     </nav>
 
     <main role="main">
 
-      <!-- Main message or call to action -->
-      <div class="jumbotron">
-        <div class="container text-center">
-          <h1 class="display-3 mt-5">La bonne affaire</h1>
-          <p>{{message}}</p>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4" *ngFor="let item of articles" >
-            <app-article 
-              [titreArticle]="item.titreArticle" 
-              [prixArticle]="item.prixArticle"
-              [altImage]="item.altImage"
-              [imageSrc]="item.imageSrc"
-              [description]="item.description"
-              [disponibilite]="item.disponibilite"
-              (message)="affiche(($event))"></app-article>
-          </div>
-        </div>
-      </div> <!-- /container -->
+      <router-outlet />
 
     </main>
 
@@ -53,4 +28,4 @@
       <p>&copy; Build by Raoul devops</p>
     </footer>
 
-<router-outlet />
+

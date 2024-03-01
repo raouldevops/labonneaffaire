@@ -2,17 +2,21 @@
     <img class="card-img-top" [src]="imageSrc" [alt]="altImage">
     <div class="card-body">
       <h5 class="card-title" [ngStyle]="{color: getColor()}">{{titreArticle}}  
-      <span *ngIf="disponibilite==false">(Indisponible)</span>
+        <span *ngIf="disponibilite==false">(Indisponible)</span>
       </h5>
       <h6 class="card-text">{{prixArticle |  currency: 'CAD' }} </h6>
       <p class="card-text">{{description}}</p>
-      <i class="bi bi-hand-thumbs-up-fill mr-1" ngClass="hideLikeBtn : hidden" (click)="onLike()"></i>{{likes}}
-      <i class="bi bi-hand-thumbs-down-fill mr-1" (click)="onDisLike()" ></i>{{dislikes}}
-        <br/><br/>
-      <span>Commentaires</span>
-      <input type="text" class="input" [(ngModel)]="comment"/>
-      <p class="card-text">{{comment}}</p>
-
+      <span *ngIf="!disabledBtnLike">
+        <i class="bi bi-hand-thumbs-up-fill mr-1"  (click)="onLike()"></i>{{likes}}
+      </span>
+      <span *ngIf="!disabledBtnDisLike">
+        <i class="bi bi-hand-thumbs-down-fill mr-1" (click)="onDisLike()"></i>{{dislikes}}
+      </span>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">
+        <a routerLink="details/{{id}}"><i class="bi bi-eye-fill mr-1" ></i>Voir l'article</a>
+      </small>
     </div>
   </div>
  

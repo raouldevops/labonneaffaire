@@ -2,27 +2,27 @@ import { NgClass, NgIf, NgStyle } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-article',
-  imports: [FormsModule, NgStyle, NgIf, NgClass, CurrencyPipe],
+  imports: [FormsModule, NgStyle, NgIf, NgClass, CurrencyPipe, RouterLink],
   standalone: true,
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'
 })
 export class ArticleComponent implements OnInit {
-  //titreArticle: string = "nom de l'article";
-  //prixArticle: number = 12;
 
   @Output() message = new EventEmitter<string>();
   likes: number = 0;
   dislikes: number = 0;
   comment?: string;
-  hideBtnLike: boolean = false;
-  hideBtnDisLike: boolean = false;
+  disabledBtnLike: boolean = false;
+  disabledBtnDisLike: boolean = false;
   
 
   //parametrer les composants
+  @Input() id!:number;
   @Input() titreArticle!:string;
   @Input() prixArticle!:number;
   @Input() altImage!: string;
@@ -39,7 +39,8 @@ export class ArticleComponent implements OnInit {
     this.dislikes--;
     this.dislikes<=0 ? this.dislikes = 0 : this.dislikes; 
     this.addNewItem(this.titreArticle);
-    this.hideBtnDisLike = true;
+    this.disabledBtnLike = true;
+    this.disabledBtnDisLike = false;
   }
 
   onDisLike(){
@@ -47,7 +48,7 @@ export class ArticleComponent implements OnInit {
     this.likes--;
     this.likes<=0 ? this.likes = 0 : this.likes; 
     this.addNewItem(this.titreArticle);
-    this.hideBtnLike = true;
+    this.disabledBtnDisLike = true;
   }
 
   addNewItem(value: string) {
@@ -58,7 +59,4 @@ export class ArticleComponent implements OnInit {
     return this.disponibilite ? "green" : "red";
   }
 
-  hideLikeBtn() {
-    return this.disponibilite ? "green" : "red";
-  }
 }
