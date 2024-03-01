@@ -1,16 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { NgClass, NgIf, NgStyle } from '@angular/common';
+import { ReactiveFormsModule, NgModel } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nouvel-article',
   standalone: true,
-  imports: [NgClass],
   templateUrl: './nouvel-article.component.html',
-  styleUrl: './nouvel-article.component.css'
+  styleUrl: './nouvel-article.component.css',
+  imports: [ReactiveFormsModule, CommonModule]
 })
 export class NouvelArticleComponent implements OnInit{
+
+  titreArticle?:string = "";
+  prixArticle?:number = 0;
+  imageSrc?: string = "";
+
   ngOnInit(): void {
+  }
+
+  creerArticle(){
+    console.log(this.titreArticle)
   }
 
 }

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
   templateUrl: './detail.component.html',
-  styleUrl: './detail.component.css'
+  styleUrl: './detail.component.css',
 })
 export class DetailComponent implements OnInit{
   id?:number;

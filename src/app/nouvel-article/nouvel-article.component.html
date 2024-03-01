@@ -1,12 +1,11 @@
 <div class="container">
     <h3 class="card-title mt-5 pt-5">Création d'un article</h3>
     <hr/>
-    <form class="mb-3" (submit)="" #f="ngForm">
-        <input type="text" class="form-control mt-5" placeholder="Nom de l'article" required/>
-        <input type="text" class="form-control mt-5" placeholder="Prix de l'article" required/>
-        <input type="text" class="form-control mt-5" placeholder="Description de l'article"/>
-        <button class="btn btn-primary mt-5 mr-5">Ajouter l'article</button>
-        <button class="btn btn-danger mt-5">Annuler</button>
+    <form class="mb-3" (submit)="creerArticle()" >
+        <input type="text" class="form-control mt-5" name="titreArticle"placeholder="Nom de l'article" required/>
+        <input type="text" class="form-control mt-5" name="prixArticle" placeholder="Prix de l'article" required/>
+        <input type="text" class="form-control mt-5" name="description" placeholder="Description de l'article"/>
+        <button class="btn btn-primary mt-5 mr-5" type="submit">Ajouter l'article</button>
     <br/>
     </form>
 </div>
